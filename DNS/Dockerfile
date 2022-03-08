@@ -1,0 +1,14 @@
+FROM internetsystemsconsortium/bind9:9.16
+
+COPY db.local /etc/bind/
+COPY named.conf /etc/bind/named.conf.template
+COPY db.interne /etc/bind/db.interne.template
+COPY db.externe /etc/bind/db.externe.template
+
+COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+RUN apt-get update && apt-get -y install dnsutils gettext-base
+
+ENV DOMAIN_NAME ".ephec-ti.be"
+ENTRYPOINT ["/entrypoint.sh"]
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD dig @127.0.0.1 cloudflare.com || exit 1
