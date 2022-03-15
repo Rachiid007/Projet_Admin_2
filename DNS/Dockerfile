@@ -9,6 +9,6 @@ COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 RUN apt-get update && apt-get -y install dnsutils gettext-base
 
-ENV DOMAIN_NAME ".ephec-ti.be"
+ENV DOMAIN_NAME "5.ephec-ti.be"
 ENTRYPOINT ["/entrypoint.sh"]
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD dig @127.0.0.1 cloudflare.com || exit 1
