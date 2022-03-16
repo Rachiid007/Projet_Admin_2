@@ -1,0 +1,33 @@
+version: "3.3"
+services:
+  # Hopital, soigne (redémarre) les containers unhealthy
+  autoheal:
+    image: willfarrell/autoheal
+    environment:
+      - "AUTOHEAL_CONTAINER_LABEL=all"
+    networks: # prevent docker from creating a default driver for this container
+      local:
+        ipv4_address: 192.168.99.99
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  # DNS
+  dns:
+    image: d34d/projet-admin:dns
+    build: ./dns
+    networks:
+      local:
+        ipv4_address: 192.168.0.2
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    environment:
+      - "DOMAIN_NAME=${DOMAIN_NAME}"
+      - "PUBLIC_IP=${PUBLIC_IP}"
+
+networks:
+  local:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/16
