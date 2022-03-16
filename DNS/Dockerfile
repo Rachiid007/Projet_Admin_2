@@ -1,14 +1,10 @@
-FROM internetsystemsconsortium/bind9:9.16
+FROM ubuntu:18.04
 
-COPY db.local /etc/bind/
-COPY named.conf /etc/bind/named.conf.template
-COPY db.interne /etc/bind/db.interne.template
-COPY db.externe /etc/bind/db.externe.template
+RUN apt-get update && apt-get install -y bind9
 
-COPY entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-RUN apt-get update && apt-get -y install dnsutils gettext-base
+WORKDIR /etc/bind
 
-ENV DOMAIN_NAME "m1-5.ephec-ti.be"
-ENTRYPOINT ["/entrypoint.sh"]
-HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD dig @127.0.0.1 cloudflare.com || exit 1
+VOLUME /etc/bind
+
+EXPOSE 53 53/udp
+CMD ["/usr/sbin/named", "-g", "-c", "/etc/bind/named.conf", "-u", "bind"]
