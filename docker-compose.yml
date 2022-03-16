@@ -13,7 +13,7 @@ services:
 
   # DNS
   dns:
-    image: d34d/projet-admin:dns
+    image: rachiid007/dns_image:latest
     build: ./dns
     networks:
       local:
