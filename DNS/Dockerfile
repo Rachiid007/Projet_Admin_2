@@ -1,10 +1,8 @@
-FROM ubuntu:18.04
+FROM internetsystemsconsortium/bind9:9.16
 
-RUN apt-get update && apt-get install -y bind9
+COPY db.local /etc/bind/
+COPY named.conf /etc/bind/named.conf.template
+COPY db.interne /etc/bind/db.interne.template
+COPY db.externe /etc/bind/db.externe.template
 
-WORKDIR /etc/bind
-
-VOLUME /etc/bind
-
-EXPOSE 53 53/udp
-CMD ["/usr/sbin/named", "-g", "-c", "/etc/bind/named.conf", "-u", "bind"]
+RUN apt-get update && apt-get -y install dnsutils gettext-base
