@@ -10,7 +10,7 @@ ${DOLLAR}TTL 86400                 ; default time to live
         )
 
         NS      ns1.m1-5.ephec-ti.be.
-        ;MX      10 mail.m1-5.ephec-ti.be.
+;MX      10 mail.m1-5.ephec-ti.be.
 
 
 ns1   IN     A        176.96.231.207

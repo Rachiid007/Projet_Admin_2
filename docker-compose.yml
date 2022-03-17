@@ -13,7 +13,7 @@ services:
 
   # DNS
   dns:
-    image: rachiid007/admin_project:dns
+    image: rachiid007/admin_project:dns4
     build: ./dns
     networks:
       local:
