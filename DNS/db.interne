@@ -15,6 +15,6 @@ ${DOLLAR}TTL 86400                 ; default time to live
 
 
 ns1   IN     A        192.168.0.2
-www   IN     A        192.168.0.5
-b2b   IN     CNAME    www
-mail  IN     A        192.168.0.7
+;www   IN     A        192.168.0.5
+;b2b   IN     CNAME    www
+;mail  IN     A        192.168.0.7

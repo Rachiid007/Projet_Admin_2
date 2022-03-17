@@ -14,4 +14,4 @@ $TTL 86400        ; default time to live
 
 
 ns    IN     A        192.168.0.2
-www   IN     A        192.168.0.3
+;www   IN     A        192.168.0.3
