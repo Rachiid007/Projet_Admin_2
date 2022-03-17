@@ -4,6 +4,8 @@ Projet du cours "Administration système et réseaux II".
 
 ## Commandes docker utile
 
+- cloner le repo `git clone https://github.com/Rachiid007/Projet_Admin_2.git`
+
 - Créer une image : `docker build -t [image-name] .`
 - Créer un container : `docker run -tid -p [container-port]:[host-machine-port] --name [container-name] [image-name]`
 - Executer des commande dans un container : `docker exec -it [container-name] bash`
