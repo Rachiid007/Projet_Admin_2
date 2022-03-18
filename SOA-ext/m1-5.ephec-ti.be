@@ -9,5 +9,4 @@ $TTL 604800
 
 ; NS configs
             IN      NS      ns.m1-5.ephec-ti.be.
-            IN      MX  10  mail
 ns          IN      A       176.96.231.207
