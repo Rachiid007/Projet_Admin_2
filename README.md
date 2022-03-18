@@ -24,3 +24,9 @@ Donner un tag à l'image avant de l'envoyer sur le repo :
 
 - `docker tag [image-name] rachiid007/admin_project:[image-name]`
 - `docker push rachiid007/admin_project:[image-name]`
+
+Reset Docker sur Ubuntu: Attention, tous les containers, images, volumes et network seront supprimés !
+```
+sudo -i
+docker system prune -a
+```
