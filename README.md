@@ -4,7 +4,10 @@ Projet du cours "Administration système et réseaux II".
 
 ## Commandes docker utile
 
-- cloner le repo `git clone https://github.com/Rachiid007/Projet_Admin_2.git`
+1. Cloner le repo :
+```
+git clone https://github.com/Rachiid007/Projet_Admin_2.git
+```
 
 - Créer une image : `docker build -t [image-name] .`
 - Créer un container : `docker run -tid -p [container-port]:[host-machine-port] --name [container-name] [image-name]`
@@ -21,3 +24,9 @@ Donner un tag à l'image avant de l'envoyer sur le repo :
 
 - `docker tag [image-name] rachiid007/admin_project:[image-name]`
 - `docker push rachiid007/admin_project:[image-name]`
+
+Reset Docker sur Ubuntu: Attention, tous les containers, images, volumes et network seront supprimés !
+```
+sudo -i
+docker system prune -a
+```
