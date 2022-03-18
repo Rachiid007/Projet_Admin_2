@@ -30,3 +30,9 @@ Reset Docker sur Ubuntu: Attention, tous les containers, images, volumes et netw
 sudo -i
 docker system prune -a
 ```
+
+
+Executer une commande dans un container qui tourne :
+```
+docker exec -ti id_container sh -c "echo a Rachiid"
+```
