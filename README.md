@@ -27,12 +27,11 @@ Donner un tag à l'image avant de l'envoyer sur le repo :
 
 Reset Docker sur Ubuntu: Attention, tous les containers, images, volumes et network seront supprimés !
 ```
-sudo -i
-docker system prune -a
+sudo docker system prune -a
 ```
 
 
 Executer une commande dans un container qui tourne :
 ```
-docker exec -ti id_container sh -c "echo a Rachiid"
+docker exec -ti id_container sh -c "echo Rachiid"
 ```
