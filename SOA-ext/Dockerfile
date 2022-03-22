@@ -1,10 +1,17 @@
-FROM alpine:3.15
+#Initialisation à partir d'une image ubuntu
+FROM ubuntu:latest
 
-RUN apk --update --no-cache add bind bind-dnssec-tools
+#Installation de bind9 et d'outils supplémentaires au débugging
+RUN apt update && apt upgrade -y && apt install bind9 bind9utils dnsutils net-tools -y
 
-COPY named.conf /etc/bind/named.conf
-COPY m1-5.ephec-ti.be /etc/bind/m1-5.ephec-ti.be
+#Copie des fichiers d'installations préparé et configuré
+COPY named.conf /etc/bind/
 
-EXPOSE 53
+COPY m1-5.ephec-ti.be /etc/bind/zones/
 
-CMD ["named", "-c", "/etc/bind/named.conf", "-g", "-u", "named"]
+#Exposition des ports de l'image sur le port 53 tcp et udp
+EXPOSE 53/udp
+EXPOSE 53/tcp
+
+#Commande réalisé au démarage du conteneur
+CMD ["named", "-c", "/etc/bind/named.conf", "-g"]
