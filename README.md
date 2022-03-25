@@ -2,23 +2,20 @@
 
 Projet du cours "Administration système et réseaux II".
 
-## Commandes docker utile
-
 1. Cloner le repo :
+
 ```
 git clone https://github.com/Rachiid007/Projet_Admin_2.git
 ```
 
+2. [Installer Docker sur le VPS](https://www.hostinger.com/tutorials/how-to-install-docker-on-ubuntu)
+
+## Commandes docker utile :
+
 - Créer une image : `docker build -t [image-name] .`
 - Créer un container : `docker run -tid -p [container-port]:[host-machine-port] --name [container-name] [image-name]`
-- Executer des commande dans un container : `docker exec -it [container-name] bash`
 - Afficher les containers : `docker ps -a`
 - Afficher les logs : `docker logs [container-name]`
-- Supprimer les images inutilisées : `docker image prune -a`
-
-- Stop All Containers: `docker kill $(docker ps -q)`
-- Remove All Containers: `docker rm $(docker ps -a -q)`
-- Remove All Docker Images: `docker rmi $(docker images -q)`
 
 Donner un tag à l'image avant de l'envoyer sur le repo :
 
@@ -26,12 +23,13 @@ Donner un tag à l'image avant de l'envoyer sur le repo :
 - `docker push rachiid007/admin_project:[image-name]`
 
 Reset Docker sur Ubuntu: Attention, tous les containers, images, volumes et network seront supprimés !
+
 ```
 sudo docker system prune -a
 ```
 
-
 Executer une commande dans un container qui tourne :
+
 ```
-docker exec -ti id_container sh -c "echo Rachiid"
+docker exec -ti <CONTAINER ID> /bin/bash
 ```
