@@ -1,7 +1,14 @@
 <?php
-    $db = mysqli_connect('176.96.231.209:5000','woody_admin','admin','woodytoys_db');
-    or die('Error connecting to MySQL server.');
+$mysqli = new mysqli("localhost:5000",'woody_admin','admin','woodytoys_db');
+
+// Check connection
+if ($mysqli -> connect_errno) {
+  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  exit();
+}
 ?>
+
+<!-- 176.96.231.209:5000 -->
 
 <html>
 
