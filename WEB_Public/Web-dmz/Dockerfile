@@ -1,15 +1,10 @@
-#https://hub.docker.com/r/romeoz/docker-apache-php
 FROM romeoz/docker-apache-php
 
-# Install some useful tools for debugging
-RUN apt-get update -y
-RUN apt-get install -y net-tools
-RUN apt-get install -y iputils-ping
-RUN apt-get install -y nano vim
-RUN apt-get install -y dnsutils
-RUN apt-get install -y elinks curl
+# Installez quelques outils utiles pour le débogage
+RUN apt-get update && apt full-upgrade -y
+RUN apt-get install net-tools iputils-ping nano vim dnsutils elinks curl -y
 
-# Add the reuired files so that the apache server can initialize all virtualhosts.
+# Ajoutez les fichiers nécessaires au serveur apache pour initialiser tous les hôtes virtuels.
 ADD ./www/ /var/www/
 ADD ./sites-available/ /etc/apache2/sites-available/
 
@@ -17,13 +12,13 @@ ADD ./sites-available/ /etc/apache2/sites-available/
 RUN apt-get install -y software-properties-common 
 RUN apt-get install -y python-certbot-apache
 
-# Security bonus for apache 403 or 404 error
+# Fichiers de configuration pour le chiffrement du port 443 et des erreurs.
 COPY apache2.conf /etc/apache2/apache2.conf
 
-# Enable the virtulhosts. 
+# Activez les Virtulhosts. (avoir plusieurs site dans un même serveur)
 # ADD NEW VirtualHosts HERE ! 
 RUN a2ensite b2b.conf
 RUN a2ensite www.conf
 
-# Restart the apache service to 'activate' the virtual hosts
+# Redémarrez le service apache pour "activer" les hôtes virtuels
 RUN service apache2 restart
