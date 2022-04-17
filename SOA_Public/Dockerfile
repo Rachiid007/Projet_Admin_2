@@ -2,12 +2,12 @@
 FROM ubuntu:latest
 
 #Installation de bind9 et d'outils supplémentaires au débugging
-RUN apt update && apt full-upgrade -y && apt install bind9 bind9utils dnsutils net-tools -y
+RUN apt update && apt full-upgrade -y && apt install bind9 bind9utils dnsutils net-tools nano -y
 
 #Copie des fichiers d'installations préparé et configuré
 COPY named.conf /etc/bind/
 
-COPY m1-5.ephec-ti.be /etc/bind/zones/m1-5.ephec-ti.be
+COPY db.m1-5.ephec-ti.be /etc/bind/zones/db.m1-5.ephec-ti.be
 
 #Exposition des ports de l'image sur le port 53 tcp et udp
 EXPOSE 53/udp

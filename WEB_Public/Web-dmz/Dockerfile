@@ -2,6 +2,8 @@ FROM romeoz/docker-apache-php
 
 # Installez quelques outils utiles pour le débogage
 RUN apt-get update && apt full-upgrade -y && apt-get install net-tools iputils-ping nano vim dnsutils elinks curl -y
+RUN apt-get update && apt full-upgrade -y
+RUN apt-get install net-tools iputils-ping nano vim dnsutils elinks curl -y
 
 # Ajoutez les fichiers nécessaires au serveur apache pour initialiser tous les hôtes virtuels.
 ADD ./www/ /var/www/
