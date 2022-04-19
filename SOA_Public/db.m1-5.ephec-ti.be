@@ -17,6 +17,7 @@ ns      IN      A       176.96.231.207
 ; service WEB
 www     IN      A       176.96.231.209
 b2b     IN      A       176.96.231.209
+_3D876532204A5DDC4409439A34491FB8    3600    CNAME    73BD23D48B1E8179E3189757AF58FAC3.F0F917C425D4581AAC323B99E027EDE3.a19fdcfa5bc7c9c.comodoca.com
 
 ; service Mail
 mail    IN      A       176.96.231.208
