@@ -15,7 +15,7 @@ if ($mysqli -> connect_errno) {
 </head>
 
 <body>
-    <h1>Bienvenu sur le site B2B (revendeurs)</h1>
+    <h1>Bienvenu sur le site B2B (revendeurs) de WoodyToys m1-5 !</h1>
  
     <?php
         $query = "SELECT * FROM toys;";
