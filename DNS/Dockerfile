@@ -12,6 +12,7 @@ COPY db.m1-5.ephec-ti.be /etc/bind/zones/db.m1-5.ephec-ti.be
 #Exposition des ports de l'image sur le port 53 tcp et udp
 EXPOSE 53/udp
 EXPOSE 53/tcp
+EXPOSE 953/tcp
 
 #Commande réalisé au démarage du conteneur
 CMD ["named", "-c", "/etc/bind/named.conf", "-g"]

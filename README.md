@@ -5,10 +5,10 @@ Projet du cours "Administration système et réseaux II".
 1. Cloner le repo :
 
 ```
-git clone https://github.com/Rachiid007/sysAdminProject.git
+git clone https://github.com/Rachiid007/sysAdminProject
 ```
 
-2. [Installer Docker sur le VPS](https://www.hostinger.com/tutorials/how-to-install-docker-on-ubuntu)
+2. [Installer Docker sur le VPS](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
 ## Commandes docker utile :
 
