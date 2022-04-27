@@ -25,7 +25,7 @@ RUN service apache2 start
 
 # activer le HTTPS
 RUN a2enmod ssl
-RUN service apache2 restart
+RUN service apache2 reload
 
 # certbot --apache
 WORKDIR /var/www/

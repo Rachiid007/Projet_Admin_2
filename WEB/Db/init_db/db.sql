@@ -10,6 +10,6 @@ CREATE TABLE jouet(
 );
 
 INSERT INTO jouet (nom,prix)
-VALUES  ('Barbie',10€),
-        ('Monopoly',25€),
-        ('Fusil Nerf,'50€);
+VALUES  ('Barbie',10),
+        ('Monopoly',25),
+        ('Fusil Nerf,'50);
