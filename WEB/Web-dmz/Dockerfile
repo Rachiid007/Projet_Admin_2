@@ -1,4 +1,4 @@
-FROM romeoz/docker-apache-php
+FROM php:8.0-apache
 
 # Installez quelques outils utiles pour le débogage
 RUN apt-get update && apt full-upgrade -y \
@@ -21,7 +21,7 @@ RUN a2ensite b2b.conf
 RUN a2ensite www.conf
 
 # Redémarrez le service apache pour "activer" les hôtes virtuels
-RUN service apache2 reload
+RUN service apache2 start
 
 # activer le HTTPS
 RUN a2enmod ssl
