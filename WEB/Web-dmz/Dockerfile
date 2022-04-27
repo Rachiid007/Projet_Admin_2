@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM romeoz/docker-apache-php
 
 # Installez quelques outils utiles pour le débogage
 RUN apt-get update && apt full-upgrade -y \
@@ -25,7 +25,7 @@ RUN service apache2 start
 
 # activer le HTTPS
 RUN a2enmod ssl
-RUN service apache2 reload
+RUN service apache2 restart
 
 # certbot --apache
 WORKDIR /var/www/

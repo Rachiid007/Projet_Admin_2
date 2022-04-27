@@ -1,15 +1,21 @@
-CREATE DATABASE web;
+CREATE USER 'woody_admin'@'176.96.231.209' IDENTIFIED BY 'admin';
+CREATE USER 'woody_admin' IDENTIFIED BY 'admin';
 
-USE web;
+CREATE DATABASE woodytoys_db;
 
-CREATE TABLE jouet(
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    nom CHAR(50) NOT NULL,
-    prix DECIMAL(8,2) NOT NULL,
-    CONSTRAINT pk_id PRIMARY KEY(id)
+GRANT ALL PRIVILEGES ON woodytoys_db.* TO 'woody_admin'@'176.96.231.209';
+GRANT ALL PRIVILEGES ON woodytoys_db.* TO 'woody_admin';
+
+USE woodytoys_db;
+
+CREATE TABLE toys(
+    id_toys INTEGER NOT NULL AUTO_INCREMENT,
+    toyName CHAR(50) NOT NULL,
+    toyPrice DECIMAL(8,2) NOT NULL,
+    CONSTRAINT pk_toys PRIMARY KEY(id_toys)
 );
 
-INSERT INTO jouet (nom,prix)
-VALUES  ('Barbie',10),
-        ('Monopoly',25),
-        ('Fusil Nerf,'50);
+INSERT INTO toys (toyName,toyPrice)
+VALUES  ('White Horse',32.19),
+        ('Ukulele',59.99),
+        ('Train locomotive',128.49);
