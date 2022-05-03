@@ -16,5 +16,3 @@ ns          IN      A       172.16.0.3
 ; services web
 erp         IN      A       172.16.0.4
 mysql       IN      A       172.16.0.5
-
-#resolv    IN      A       172.16.0.2

@@ -10,7 +10,7 @@ $TTL 604800
 ; name servers => RR de type NS
 @               IN      NS      ns.intranet.m1-5.ephec-ti.be.
 
-#2		PTR		resolv.intranet.ephec-ti.be.
+#2              PTR             resolv.intranet.ephec-ti.be.
 
 ; name servers => RR de type PTR
 3               IN      PTR     ns.intranet.m1-5.ephec-ti.be.
