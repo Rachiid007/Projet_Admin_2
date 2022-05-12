@@ -1,9 +1,11 @@
 FROM ubuntu:20.04
-RUN apt-get update && apt-get -y full-upgrade \
-    && apt-get install -y nano
 
-# Installation des dépendances
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+RUN apt-get update -y && apt-get full-upgrade -y
+
+# Fix timezone
+ENV TZ=Europe/Brussel
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt install -y \
   apt-utils \
   build-essential \
@@ -17,12 +19,10 @@ RUN apt install -y \
   pkg-config \
   libjansson-dev \
   libedit-dev \
-  libssl-dev
+  libssl-dev \
+  nano
 
-RUN echo "Europe/Brussels" | tee /etc/timezone
-RUN dpkg-reconfigure --frontend noninteractive tzdata
-
-# Installation d'Asterisk LTS (10/05/22)
+# Installation d'Asterisk + Fail2Ban
 WORKDIR /usr/local/src/
 RUN wget http://downloads.asterisk.org/pub/telephony/asterisk/old-releases/asterisk-18.11.3.tar.gz
 RUN tar -xvzf asterisk-18.11.3.tar.gz
@@ -33,12 +33,16 @@ RUN make install
 RUN make samples
 RUN make config
 
-RUN apt-get -y install fail2ban
-
-COPY ./config/ /etc/asterisk/
+COPY ./config/users.conf /etc/asterisk/users.conf
+COPY ./config/sip.conf /etc/asterisk/sip.conf
+COPY ./config/extensions.conf /etc/asterisk/extensions.conf
+COPY ./config/voicemail.conf /etc/asterisk/voicemail.conf
+COPY ./config/features.conf /etc/asterisk/features.conf
+COPY ./config/logger.conf /etc/asterisk/logger.config
 
 EXPOSE 5060/udp
 EXPOSE 5060/tcp
+
 
 EXPOSE 19000-20000/udp
 

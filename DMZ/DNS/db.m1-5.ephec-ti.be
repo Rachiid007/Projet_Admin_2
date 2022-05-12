@@ -1,11 +1,12 @@
 $ORIGIN m1-5.ephec-ti.be.
-$TTL 604800
+$TTL 3600      ; 1 hour
 @       IN      SOA     ns.m1-5.ephec-ti.be. root.m1-5.ephec-ti.be. (
-                        2           ; Serial
-                        604800      ; Refresh
-                        86400       ; Retry
-                        2419200     ; Expire
-                        604800 )    ; Negative Cache TTL
+                                2013020905 ; serial -> incrémentemente de 1 à chaque modification
+                                3600       ; refresh (1 hour)
+                                3000       ; retry (50 minutes)
+                                4619200    ; expire (7 weeks 4 days 11 hours 6 minutes 40 seconds)
+                                604800     ; minimum (1 week)
+                                )
 
 ; name server => RR de type NS
 @       IN      NS      ns.m1-5.ephec-ti.be.
@@ -19,11 +20,10 @@ www     IN      A       176.96.231.209
 b2b     IN      A       176.96.231.209
 
 ; Mail
-mail    IN      A       176.96.231.209
-smtp    IN      CNAME   mail
-imap    IN      CNAME   mail
+mail        IN      A       176.96.231.209
+smtp        IN      CNAME   mail
 
 ; VoIP
-_sip._udp	SRV     0       0       5060        sip
-_sip._tcp 	SRV     0       0       5060        sip
-sip 		IN	    A	    176.96.231.207
+_sip._udp       SRV     0       0       5060        sip
+_sip._tcp       SRV     0       0       5060        sip
+sip             IN      A       176.96.231.207
