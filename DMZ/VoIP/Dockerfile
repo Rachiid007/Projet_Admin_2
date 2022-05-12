@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 RUN apt-get update -y && apt-get full-upgrade -y
 
-# Fix timezone
+# Change timezone
 ENV TZ=Europe/Brussel
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -22,7 +22,7 @@ RUN apt install -y \
   libssl-dev \
   nano
 
-# Installation d'Asterisk + Fail2Ban
+# Installation d'Asterisk 18.11.3 (LTS à la date du 12/05/2022)
 WORKDIR /usr/local/src/
 RUN wget http://downloads.asterisk.org/pub/telephony/asterisk/old-releases/asterisk-18.11.3.tar.gz
 RUN tar -xvzf asterisk-18.11.3.tar.gz
