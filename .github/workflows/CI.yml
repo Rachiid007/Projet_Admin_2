@@ -7,7 +7,7 @@ on:
     # Triggers workflow on push events but only for main branch with version
     push:
         branches:
-            - "main"
+            - "release"
         tags:
             - "v*.*.*"
 
