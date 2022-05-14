@@ -40,11 +40,11 @@ COPY ./config/voicemail.conf /etc/asterisk/voicemail.conf
 COPY ./config/features.conf /etc/asterisk/features.conf
 COPY ./config/logger.conf /etc/asterisk/logger.config
 
+# SIP
 EXPOSE 5060/udp
 EXPOSE 5060/tcp
 
-
+# RTP
 EXPOSE 19000-20000/udp
 
-#Run asterisk
 CMD ["asterisk", "-f"]
